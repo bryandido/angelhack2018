@@ -155,16 +155,12 @@
         }
 
         // var socket = io.connect('http')
-
-        var users = {
-        };
-
         var currentProgress = 0;
 
         function appendUser(userObj) {
             if (userObj) {
-                $('#list').append("<tr><th scope=\"row\">" + userObj.time + "</th><td>" + userObj.name + "</td><td>" +
-                    userObj.message + "</td><td>" + userObj.type + "</td></tr>");
+                /*$('#list').append("<tr><th scope=\"row\">" + userObj.time + "</th><td>" + userObj.name + "</td><td>" +
+                    userObj.message + "</td><td>" + userObj.type + "</td></tr>");*/
                 currentProgress += 1;
                 $('#userProgressBar1').css('width', ((currentProgress/$('#progressText1').text().substring($('#progressText1').text().length-1))*100).toString() + '%');
                 $('#userProgressBar2').css('width', ((currentProgress/$('#progressText2').text().substring($('#progressText2').text().length-2))*100).toString() + '%');
