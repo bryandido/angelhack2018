@@ -17,9 +17,9 @@ app.get('/admin', function(req,res,next){
     res.sendFile(__dirname + '/admin.html');
 });
 
-app.get('/home', function(req,res,next){
+/*app.get('/home', function(req,res,next){
     res.sendFile(__dirname + '/assets/index.html');
-});
+});*/
 
 server.listen(4200, function(){
     console.log('listening on localhost:4200');
