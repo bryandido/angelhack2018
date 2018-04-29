@@ -13,16 +13,12 @@
     <link rel="stylesheet" href="admin.css" type="text/css" />
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand mx-auto" href="/admin">O(1) Responder</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </nav>
+<body style="background-color: black; background: fixed bottom center; background-image: url(https://accuweather.brightspotcdn.com/6a/e4/ecd8296440578be501777f39c4da/wildfire.jpg)">
+    <section style="height: 30vh; width: 100vw; text-align:center; color: white; padding-top: 15vh">
+        <h1 style="color:white">O(1) Responder</h1>
+    </section>
     <br/>
-    <div class="container-fluid">
+    <div class="container-fluid" style="background-color:white; width:90vw; padding-top:50px">
         <div class="row">
             <div class="col-sm">
                 <table class="table">
@@ -38,6 +34,7 @@
                     </tbody>
                 </table>
             </div>
+            
             <!--
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
@@ -62,11 +59,11 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-sm">
-                                            <h5 class="card-title">Progress 0/100</h5>
+                                            <h5 id="progressText" class="card-title">Progress 0/100</h5>
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="progress">
-                                                <div class="progress-bar bg-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div id="userProgressBar" class="progress-bar bg-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -90,7 +87,6 @@
     </div>
     <br/>
 
-
     <script src="map.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDjTsSQn8PdExfKycFLvSrcstJdWCx4v0&callback=myMap"></script>
     <script src="/socket.io/socket.io.js"></script>
@@ -103,6 +99,46 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
         crossorigin="anonymous"></script>
+        <script type='text/javascript'>
+            var user = {
+time: '',
+name: '',
+message: '',
+type: ''
+}
+
+// var socket = io.connect('http')
+
+var users = {
+1:{
+    time: '0219389453',
+    name: 'Jane Doe',
+    message: 'For who thoroughly her boy estimating conviction. Removed demands expense account in outward tedious do. Particular way thoroughly unaffected projection favourable mrs can projecting own. Thirty it matter enable become admire in giving. See resolved goodness felicity shy civility domestic had but. Drawings offended yet answered jennings perceive laughing six did far. On on produce colonel pointed. Just four sold need over how any. In to september suspicion determine he prevailed admitting. On adapted an as affixed limited on. Giving cousin warmly things no spring mr be abroad. Relation breeding be as repeated strictly followed margaret. One gravity son brought shyness waiting regular led ham. Effect if in up no depend seemed. Ecstatic elegance gay but disposed. We me rent been part what. An concluded sportsman offending so provision mr education. Bed uncommonly his discovered for estimating far. Equally he minutes my hastily. Up hung mr we give rest half. Painful so he an comfort is manners. ',
+    type: 'Natural'
+},
+2:{
+    time: '021938947',
+    name: 'James Dan',
+    message: 'Help fire',
+    type: 'Fire'
+}
+};
+
+var currentProgress = 0;
+
+function appendUser(userObj){
+if (userObj){
+    $('#list').append("<tr><th scope=\"row\">" + userObj.time + "</th><td>"+ userObj.name +"</td><td>" + userObj.message + "</td><td>" + userObj.type + "</td></tr>");
+    currentProgress += 1;
+    $('#userProgressBar').css('width', currentProgress.toString() + '%');
+    $('#progressText').html('PROGRESS ' + currentProgress + '/100');
+}
+}
+
+Object.keys(users).map((v,i)=>{
+appendUser(users[v]);
+});
+        </script>
 
 </body>
 

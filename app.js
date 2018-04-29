@@ -46,6 +46,7 @@ io.on('connection', function (client) {
         var collection = db_c.collection('userResponse'); // mongoclient.db
         collection.insert(msg);
         client.emit('admin_message', msg);
+        //console.log(msg);
     });
 
     client.on('chat message', function (msg) {
