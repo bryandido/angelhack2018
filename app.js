@@ -21,16 +21,12 @@ var adminID;
 app.use(express.static(__dirname + '/node_modules'));
 app.use(express.static(__dirname + '/public'));
 
-app.get('/post', function (req, res, next) {
-    res.sendFile(__dirname + '/post.html');
+app.get('/', function (req, res, next) {
+    res.sendFile(__dirname + '/index.html');
 });
 
 app.get('/admin', function (req, res, next) {
     res.sendFile(__dirname + '/admin.html');
-});
-
-app.get('/', function (req, res, next) {
-    res.sendFile(__dirname + '/assets/index.html');
 });
 
 server.listen(4200, function(){
