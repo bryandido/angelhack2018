@@ -7,19 +7,20 @@ var ss = require('socket.io-stream');
 var path = require('path');
 var adminID;
 
-app.use(express.static(__dirname + '/node_modules'));  
+app.use(express.static(__dirname + '/node_modules'));
+app.use(express.static(__dirname + '/assets'));  
 
-app.get('/', function(req, res,next) {  
-    res.sendFile(__dirname + '/index.html');
+app.get('/post', function(req, res,next) {  
+    res.sendFile(__dirname + '/post.html');
 });
 
 app.get('/admin', function(req,res,next){
     res.sendFile(__dirname + '/admin.html');
 });
 
-/*app.get('/home', function(req,res,next){
+app.get('/', function(req,res,next){
     res.sendFile(__dirname + '/assets/index.html');
-});*/
+});
 
 server.listen(4200, function(){
     console.log('listening on localhost:4200');
@@ -38,7 +39,7 @@ io.on('connection', function(client) {
             io.emit('admin_message',msg);
             io.emit('admin_ip',clientIP);
             io.emit('admin_id',clientID);
-            console.log("Message sent is "+msg);
+            console.log("Message from "+clientIP+" by "+clientID+"sent is "+msg);
     });
 
     ss(client).on('record', function(audio,data){
