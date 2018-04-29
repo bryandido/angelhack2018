@@ -9,6 +9,7 @@ $(function () {
                 + msg["time"] +"</td><td>" + name + "</td><td>" + msg["mes"] + "</td><td>" +
                  msg["type"] + "</td></tr>")
             data[name] = {}
+	    appendType(msg["type"]);
         }else{
             data[name] = {
                 time: msg["time"],

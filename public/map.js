@@ -7,12 +7,11 @@ var users={
 };
 
 function myMap(user) {
+    console.log(user)
     if (user){
-      users[Object.keys(user)[0]] = {
-        lat: user['lat'],
-        long: user['long']
-      };
-      var center = new google.maps.LatLng(user['lat'],user['long']);
+      users[Object.keys(user)[0]] = user[Object.keys(user)[0]];
+      console.log(users)
+      var center = new google.maps.LatLng(Object.keys(user)[0]['lat'],Object.keys(user)[0]['long']);
       var marker = new google.maps.Marker({position : center,animation: google.maps.Animation.BOUNCE});
       marker.setMap(map);
     }
@@ -24,6 +23,7 @@ function myMap(user) {
     var markers = [];
     Object.keys(users).map((v,i)=>{
       console.log(v);
+      console.log(users[v]);
       centers.push(new google.maps.LatLng(users[v].lat,users[v].long));
       markers.push(new google.maps.Marker({position : centers[i],animation: google.maps.Animation.BOUNCE}));
     });
