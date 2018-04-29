@@ -21,15 +21,20 @@ server.listen(4200, function(){
 });
 
 io.on('connection', function(client) {
+
     var clientIP = client.handshake.address;
     var clientID = client.id;
-    console.log('Client '+ clientID +' connected from '+clientIP);
+
     client.on('disconnect', function(){
         console.log('Client disconnected');
     });
+
     client.on('chat message', function(msg){
-            io.emit('admin_message',msg)
+            io.emit('chat message', msg);
+            io.emit('admin_message',msg);
+            console.log("Message sent is "+msg);
     });
+
     ss(client).on('record', function(audio,data){
         var filename = path.basename(data.name);
         stream.pipe(fs.createWriteStream(filename));
