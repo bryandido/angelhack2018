@@ -5,7 +5,7 @@ $(function () {
         $('#messages').text(msg);
         name = msg["name"].trim().split().join("")
         if (data[name] === undefined){
-            $('#list').append('<tr id="' + name + '"/>').html("<td>ex.</td><td>" + name + "</td><td>Otto</td>")
+            $('#list').append('<tr id="' + name + '"/>').html("<td>" + msg["time"] +"</td><td>" + name + "</td><td>" + msg["message"] + "</td>")
         }
         data[name] = {
             time: msg["time"],
