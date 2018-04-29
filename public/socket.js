@@ -5,14 +5,14 @@ $(function () {
         $('#messages').text(msg);
         name = msg["profile"]["name"]
         if (data[name] === undefined){
-            $('#list').append('<tr id="' + name + '"/>').html("<td>" + msg["profile"]["time"] +"</td><td>" + name + "</td><td>" + msg["profile"]["message"] + "</td>")
+            $('#list').append('<tr id="' + name + '<td>' + msg["time"] +"</td><td>" + name + "</td><td>" + msg["message"] + "</td></tr>")
+            data[name] = {}
         }else{
             data[name] = {
                 time: msg["profile"]["time"],
                 location: msg["profile"]["location"]
                 }
-            $('#'+name).html("<td>ex.</td><td>" + name + "</td><td>Otto</td>")
-        }
+            $('#'+name).html('<td>' + msg["time"] +"</td><td>" + name + "</td><td>" + msg["message"] + "</td>")
     });
     socket.on('admin_ip', function (msg) {
         $('#ip').text(msg);
