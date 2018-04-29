@@ -8,12 +8,17 @@ var path = require('path');
 var adminID;
 
 app.use(express.static(__dirname + '/node_modules'));  
+
 app.get('/', function(req, res,next) {  
     res.sendFile(__dirname + '/index.html');
 });
 
 app.get('/admin', function(req,res,next){
     res.sendFile(__dirname + '/admin.html');
+});
+
+app.get('/home', function(req,res,next){
+    res.sendFile(__dirname + '/assets/index.html');
 });
 
 server.listen(4200, function(){
@@ -30,8 +35,9 @@ io.on('connection', function(client) {
     });
 
     client.on('chat message', function(msg){
-            io.emit('chat message', msg);
             io.emit('admin_message',msg);
+            io.emit('admin_ip',clientIP);
+            io.emit('admin_id',clientID);
             console.log("Message sent is "+msg);
     });
 
