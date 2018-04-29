@@ -1,3 +1,5 @@
 # dependencies
 /node_modules
 login_node.pemg
+
+.DS_Store
