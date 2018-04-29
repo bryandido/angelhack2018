@@ -1,4 +1,6 @@
 // app.js
+
+require("./data_model.js")
 var express = require('express');  
 var app = express();  
 var server = require('http').createServer(app);  
@@ -6,6 +8,7 @@ var io = require('socket.io')(server);
 var ss = require('socket.io-stream');
 var path = require('path');
 var adminID;
+
 
 app.use(express.static(__dirname + '/node_modules'));  
 
@@ -21,6 +24,9 @@ app.get('/admin', function(req,res,next){
     res.sendFile(__dirname + '/assets/index.html');
 });*/
 
+
+
+
 server.listen(4200, function(){
     console.log('listening on localhost:4200');
 });
@@ -34,7 +40,14 @@ io.on('connection', function(client) {
         console.log('Client disconnected');
     });
 
+    client.on("user_data", function(msg){
+        db.userResponse.insert(msg)
+
+
+    });
+
     client.on('chat message', function(msg){
+        
             io.emit('admin_message',msg);
             io.emit('admin_ip',clientIP);
             io.emit('admin_id',clientID);
