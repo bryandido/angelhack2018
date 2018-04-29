@@ -34,16 +34,6 @@
                     </tbody>
                 </table>
             </div>
-            
-            <!--
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <ul>
-                        <li id="messages"></li>
-                    </ul>
-                </div>
-            </div>
-            -->
             <div class="col-sm">
                 <div class="container">
                     <div class="row">
@@ -55,15 +45,72 @@
                     <div class="row">
                         <div class="col-sm">
                             <div class="card border-success mb-3">
-                                <div class="card-header">San Jose Earthquake Diaster Response</div>
+                                <div class="card-header">Police Report</div>
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-sm">
-                                            <h5 id="progressText" class="card-title">Progress 0/100</h5>
+                                            <h5 class="card-title" id="progressText1">Progress 0/4</h5>
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="progress">
-                                                <div id="userProgressBar" class="progress-bar bg-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div class="progress-bar bg-info" id="userProgressBar1" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0"
+                                                    aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="card-text">
+                                        Initiative to migitate diaster and provide relief
+                                        <ul class="list-group">
+                                            <li class="list-group-item">Send water and MRE supplies</li>
+                                            <li class="list-group-item">Invoke rescue initiative</li>
+                                            <li class="list-group-item">Start help funds campaign</li>
+                                            <li class="list-group-item">Establish communication network</li>
+                                            <li class="list-group-item">O(1) rescuee beacon</li>
+                                        </ul>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="card border-success mb-3">
+                                <div class="card-header">Emergency Response</div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <h5 class="card-title" id="progressText2">Progress 0/20</h5>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="progress">
+                                                <div class="progress-bar bg-info" id="userProgressBar2" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0"
+                                                    aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="card-text">
+                                        Initiative to migitate diaster and provide relief
+                                        <ul class="list-group">
+                                            <li class="list-group-item">Send water and MRE supplies</li>
+                                            <li class="list-group-item">Invoke rescue initiative</li>
+                                            <li class="list-group-item">Start help funds campaign</li>
+                                            <li class="list-group-item">Establish communication network</li>
+                                            <li class="list-group-item">O(1) rescuee beacon</li>
+                                        </ul>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="card border-success mb-3">
+                                <div class="card-header">Natural Diaster Response</div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <h5 class="card-title" id="progressText3">Progress 0/100</h5>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="progress">
+                                                <div class="progress-bar bg-info" id="userProgressBar3" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0"
+                                                    aria-valuemax="100"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -99,46 +146,51 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
         crossorigin="anonymous"></script>
-        <script type='text/javascript'>
-            var user = {
-time: '',
-name: '',
-message: '',
-type: ''
-}
+    <script type="text/javascript">
+        var user = {
+            time: '',
+            name: '',
+            message: '',
+            type: ''
+        }
 
-// var socket = io.connect('http')
+        // var socket = io.connect('http')
 
-var users = {
-1:{
-    time: '0219389453',
-    name: 'Jane Doe',
-    message: 'For who thoroughly her boy estimating conviction. Removed demands expense account in outward tedious do. Particular way thoroughly unaffected projection favourable mrs can projecting own. Thirty it matter enable become admire in giving. See resolved goodness felicity shy civility domestic had but. Drawings offended yet answered jennings perceive laughing six did far. On on produce colonel pointed. Just four sold need over how any. In to september suspicion determine he prevailed admitting. On adapted an as affixed limited on. Giving cousin warmly things no spring mr be abroad. Relation breeding be as repeated strictly followed margaret. One gravity son brought shyness waiting regular led ham. Effect if in up no depend seemed. Ecstatic elegance gay but disposed. We me rent been part what. An concluded sportsman offending so provision mr education. Bed uncommonly his discovered for estimating far. Equally he minutes my hastily. Up hung mr we give rest half. Painful so he an comfort is manners. ',
-    type: 'Natural'
-},
-2:{
-    time: '021938947',
-    name: 'James Dan',
-    message: 'Help fire',
-    type: 'Fire'
-}
-};
+        var users = {
+            1: {
+                time: '0219389453',
+                name: 'Jane Doe',
+                message: 'Default',
+                type: 'Natural'
+            },
+            2: {
+                time: '021938947',
+                name: 'James Dan',
+                message: 'Help fire',
+                type: 'Fire'
+            }
+        };
 
-var currentProgress = 0;
+        var currentProgress = 0;
 
-function appendUser(userObj){
-if (userObj){
-    $('#list').append("<tr><th scope=\"row\">" + userObj.time + "</th><td>"+ userObj.name +"</td><td>" + userObj.message + "</td><td>" + userObj.type + "</td></tr>");
-    currentProgress += 1;
-    $('#userProgressBar').css('width', currentProgress.toString() + '%');
-    $('#progressText').html('PROGRESS ' + currentProgress + '/100');
-}
-}
+        function appendUser(userObj) {
+            if (userObj) {
+                $('#list').append("<tr><th scope=\"row\">" + userObj.time + "</th><td>" + userObj.name + "</td><td>" +
+                    userObj.message + "</td><td>" + userObj.type + "</td></tr>");
+                currentProgress += 1;
+                $('#userProgressBar1').css('width', ((currentProgress/$('#progressText1').text().substring($('#progressText1').text().length-1))*100).toString() + '%');
+                $('#userProgressBar2').css('width', ((currentProgress/$('#progressText2').text().substring($('#progressText2').text().length-2))*100).toString() + '%');
+                $('#userProgressBar3').css('width', ((currentProgress/$('#progressText3').text().substring($('#progressText3').text().length-3))*100).toString() + '%');
+                $('#progressText1').html('PROGRESS ' + currentProgress + '/' + $('#progressText1').text().substring($('#progressText1').text().length-1));
+                $('#progressText2').html('PROGRESS ' + currentProgress + '/' + $('#progressText2').text().substring($('#progressText2').text().length-2));
+                $('#progressText3').html('PROGRESS ' + currentProgress + '/' + $('#progressText3').text().substring($('#progressText3').text().length-3));
+            }
+        }
 
-Object.keys(users).map((v,i)=>{
-appendUser(users[v]);
-});
-        </script>
+        Object.keys(users).map((v, i) => {
+            appendUser(users[v]);
+        });
+    </script>
 
 </body>
 
