@@ -9,16 +9,21 @@ var users={
   }
 };
 
-function addUser(user){
-  if (user){
-    users.push(user);
-  }
-}
-
 function myMap(user) {
-    if (user)
-      addUser(user);
     var mapCanvas = document.getElementById("map");
+    var mapOptions = {center: myCenter, zoom: 12};
+    var map = new google.maps.Map(mapCanvas,mapOptions);
+
+    if (user){
+      users[Object.keys(user)[0]] = {
+        lat: user['lat'],
+        long: user['long']
+      };
+      var center = new google.maps.LatLng(user['lat'],user['long']);
+      var marker = new google.maps.Marker({position : center,animation: google.maps.Animation.BOUNCE});
+      marker.setMap(map);
+    }
+    
     var myCenter = new google.maps.LatLng(37.5486997,-122.0589753); 
     
     // initialize all the markers with the user objects
@@ -29,8 +34,6 @@ function myMap(user) {
       markers.push(new google.maps.Marker({position : centers[i],animation: google.maps.Animation.BOUNCE}));
     });
     
-    var mapOptions = {center: myCenter, zoom: 12};
-    var map = new google.maps.Map(mapCanvas,mapOptions);
     var marker = new google.maps.Marker({
       position: myCenter,
       animation: google.maps.Animation.BOUNCE
