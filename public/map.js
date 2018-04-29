@@ -12,6 +12,7 @@ function myMap(user) {
       users[Object.keys(user)[0]] = user[Object.keys(user)[0]];
       console.log(users)
       var center = new google.maps.LatLng(Object.keys(user)[0]['lat'],Object.keys(user)[0]['long']);
+      var center = new google.maps.LatLng(user['lat'],user['long']);
       var marker = new google.maps.Marker({position : center,animation: google.maps.Animation.BOUNCE});
       marker.setMap(map);
     }

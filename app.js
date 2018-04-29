@@ -1,15 +1,15 @@
 // app.js
 
 //var mc = require("./data_model.js")
-var MongoClient = require('mongodb').MongoClient;
+//var MongoClient = require('mongodb').MongoClient;
 // Connect to the db
 var db_c
-MongoClient.connect("mongodb://localhost:27017/emergencyDB", function(err, db) {
+/*MongoClient.connect("mongodb://localhost:27017/emergencyDB", function(err, db) {
   if(!err) {
     db_c = db;
     console.log("Connected to emergencyDB");
   }
-});
+});*/
 var express = require('express');  
 var app = express();  
 var server = require('http').createServer(app);  
@@ -43,8 +43,8 @@ io.on('connection', function (client) {
     });
 
     client.on("user_data", function(msg){
-        var collection = db_c.collection('userResponse'); // mongoclient.db
-        collection.insert(msg);
+        //var collection = db_c.collection('userResponse'); // mongoclient.db
+        //collection.insert(msg);
         io.emit('admin_message', msg);
         console.log(msg);
     });
