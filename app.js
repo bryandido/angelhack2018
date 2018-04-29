@@ -51,6 +51,7 @@ io.on('connection', function (client) {
     client.on('chat message', function (msg) {
 
         io.emit('admin_message', msg);
+        msg = {"name":"shafi", "time": new Date(), "message":"hi whats up", "location":[1,2]}
         io.emit('admin_ip', clientIP);
         io.emit('admin_id', clientID);
         console.log("Message from " + clientIP + " by " + clientID + "sent is " + msg);
