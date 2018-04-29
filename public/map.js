@@ -9,8 +9,8 @@ var users={
 function myMap(user) {
     if (user){
       users[Object.keys(user)[0]] = {
-        lat: user['lat'],
-        long: user['long']
+        lat: Object.keys(user)[0]['lat'],
+        long: Object.keys(user)[0]['long']
       };
       var center = new google.maps.LatLng(user['lat'],user['long']);
       var marker = new google.maps.Marker({position : center,animation: google.maps.Animation.BOUNCE});

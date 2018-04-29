@@ -17,11 +17,11 @@ $(function () {
             $('#'+name).html('<td>' + msg["time"] +"</td><td>" + name + "</td><td>" + msg["mes"] + "</td><td>" +
                  msg["type"] + "</td></tr>")
         }
-        loc = {}
+        loc = {};
         loc[name] = {
             lat: msg["location"][0], long:msg["location"][1]
         }
-        myMap(loc)
+        myMap(loc);
     });
     socket.on('admin_ip', function (msg) {
         $('#ip').text(msg);
