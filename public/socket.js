@@ -3,7 +3,7 @@ $(function () {
     var socket = io();
     socket.on('admin_message', function (msg) {
         $('#messages').text(msg);
-        name = msg.[name]
+        name = msg[name]  
         if (data[name] ===undefined)
             $('#list').append('<tr id=" ' + name + '"/>')
         data[name] = {
