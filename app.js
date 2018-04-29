@@ -5,10 +5,15 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var ss = require('socket.io-stream');
 var path = require('path');
+var adminID;
 
 app.use(express.static(__dirname + '/node_modules'));  
 app.get('/', function(req, res,next) {  
     res.sendFile(__dirname + '/index.html');
+});
+
+app.get('/admin', function(req,res,next){
+    res.sendFile(__dirname + '/admin.html');
 });
 
 server.listen(4200, function(){
@@ -24,6 +29,12 @@ io.on('connection', function(client) {
     });
     client.on('chat message', function(msg){
         io.emit('chat message',msg)
+    });
+    client.on('admin', function(){
+        if (adminID===undefined){
+            adminID = client.id;
+        }
+        console.log("Admin connected "+adminID);
     });
     ss(client).on('record', function(audio,data){
         var filename = path.basename(data.name);
