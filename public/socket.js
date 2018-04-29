@@ -2,16 +2,24 @@ $(function () {
     var data = {}
     var socket = io();
     socket.on('admin_message', function (msg) {
-        $('#messages').text(msg);
-        name = msg["name"].trim().split().join("")
+        name = msg["profile"]["name"].split(" ").join("_")
+        console.log(msg["mes"])
         if (data[name] === undefined){
-            $('#list').append('<tr id="' + name + '"/>').html("<td>" + msg["time"] +"</td><td>" + name + "</td><td>" + msg["message"] + "</td>")
+            $('#list').append('<tr id="' + name + '"><td>' 
+                + msg["time"] +"</td><td>" + name + "</td><td>" + msg["mes"] + "</td></tr>")
+            data[name] = {}
+        }else{
+            data[name] = {
+                time: msg["time"],
+                location: msg["location"]
+                }
+            $('#'+name).html('<td>' + msg["time"] +"</td><td>" + name + "</td><td>" + msg["mes"] + "</td>")
         }
-        data[name] = {
-            time: msg["time"],
-            location: msg["location"]
-            }
-        $('#'+name).html("<td>ex.</td><td>" + name + "</td><td>Otto</td>")
+        loc = {}
+        loc[name] = {
+            lat: msg["location"][0], long:msg["location"][1]
+        }
+        myMap(loc)
     });
     socket.on('admin_ip', function (msg) {
         $('#ip').text(msg);

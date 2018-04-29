@@ -11,7 +11,7 @@ var users={
 
 function addUser(user, name){
   if (user){
-    users[user] = 
+    users.push(user);
   }
 }
 
