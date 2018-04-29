@@ -14,7 +14,7 @@ $(function () {
                 time: msg["time"],
                 location: msg["location"]
                 }
-            $('#'+name).html('<td>' + msg["time"] +"</td><td>" + name + "</td><td>" +
+            $('#'+name).html('<td>' + msg["time"] +"</td><td>" + name + "</td><td>" + msg["mes"] + "</td><td>" +
                  msg["type"] + "</td></tr>")
         }
         loc = {}
