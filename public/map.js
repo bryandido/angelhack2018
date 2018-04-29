@@ -1,9 +1,10 @@
-/*var users={
+var users={
+  /*
   1:{
     lat: 37.5486997,
     long: -122.0589753
-  }
-};*/
+}*/
+};
 
 function myMap(user) {
     if (user){
