@@ -9,13 +9,15 @@ var users={
   }
 };
 
-function addUser(user, name){
+function addUser(user){
   if (user){
     users.push(user);
   }
 }
 
-function myMap() {
+function myMap(user) {
+    if (user)
+      addUser(user);
     var mapCanvas = document.getElementById("map");
     var myCenter = new google.maps.LatLng(37.5486997,-122.0589753); 
     
