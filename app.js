@@ -21,20 +21,14 @@ server.listen(4200, function(){
 });
 
 io.on('connection', function(client) {
-    var address = client.handshake.address;
-    console.log('Client '+ client.id +' connected from '+address);
-    console.log();
+    var clientIP = client.handshake.address;
+    var clientID = client.id;
+    console.log('Client '+ clientID +' connected from '+clientIP);
     client.on('disconnect', function(){
         console.log('Client disconnected');
     });
     client.on('chat message', function(msg){
-        io.emit('chat message',msg)
-    });
-    client.on('admin', function(){
-        if (adminID===undefined){
-            adminID = client.id;
-        }
-        console.log("Admin connected "+adminID);
+            io.emit('admin_message',msg)
     });
     ss(client).on('record', function(audio,data){
         var filename = path.basename(data.name);
