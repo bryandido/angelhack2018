@@ -41,9 +41,8 @@ io.on('connection', function(client) {
     });
 
     client.on("user_data", function(msg){
-        db.userResponse.insert(msg)
-
-
+        var collection = db.collection('userResponse');
+        collection.insert(msg);
     });
 
     client.on('chat message', function(msg){
