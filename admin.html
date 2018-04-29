@@ -7,23 +7,31 @@
 </head>
 
 <body>
-    <ul >
-        <li id="messages"></li>
-        <li id="id"></li>
-        <li id="ip"></li>
-    </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <ul>
+                    <li id="messages"></li>
+                    <li id="id"></li>
+                    <li id="ip"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="map"></div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script>
         $(function () {
             var socket = io();
-            socket.on('admin_message', function(msg) {
+            socket.on('admin_message', function (msg) {
                 $('#messages').text(msg);
             });
-            socket.on('admin_ip', function(msg){
+            socket.on('admin_ip', function (msg) {
                 $('#ip').text(msg);
             });
-            socket.on('admin_id', function(msg){
+            socket.on('admin_id', function (msg) {
                 $('#id').text(msg);
             });
         });
